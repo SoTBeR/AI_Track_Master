@@ -13,4 +13,5 @@ and the project uses [Semantic Versioning](https://semver.org/).
 - ADR-0002: Rust as the language of core, server and CLI; toolchain Rust stable 1.99.1.
 - Session model spec (draft): tracks, buses, master bus, versions and rollback, write-path rules.
 - Target profile format spec (draft): versioned TOML profiles with sourced platform values.
+- Release quality targets spec (draft): RT-1..RT-5 from PLAN section 8 with measurement and milestones.
 - LICENSE (Apache-2.0, unmodified canonical text) and NOTICE (copyright and reserved MPL-2.0 attribution section).
