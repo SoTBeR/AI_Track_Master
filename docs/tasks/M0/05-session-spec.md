@@ -3,7 +3,7 @@ id: M0-05
 title: Write the session model spec
 milestone: M0
 layer: docs
-status: in-review
+status: done
 depends_on: []
 spec: docs/spec/session.md
 agents: [architect, code-reviewer]

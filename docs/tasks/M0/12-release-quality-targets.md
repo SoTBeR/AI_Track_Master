@@ -3,7 +3,7 @@ id: M0-12
 title: Record the release quality targets
 milestone: M0
 layer: docs
-status: in-review
+status: done
 depends_on: []
 spec: docs/spec/release-targets.md
 agents: [architect, code-reviewer]

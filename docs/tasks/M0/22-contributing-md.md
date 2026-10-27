@@ -3,7 +3,7 @@ id: M0-22
 title: Add a short CONTRIBUTING.md (DCO, Conventional Commits, branch per task)
 milestone: M0
 layer: platform
-status: in-review
+status: done
 depends_on: [M0-02]
 spec: none
 agents: [platform-engineer, code-reviewer]

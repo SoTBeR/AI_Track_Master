@@ -3,7 +3,7 @@ id: M0-11
 title: Specify the target profile format
 milestone: M0
 layer: docs
-status: in-review
+status: done
 depends_on: []
 spec: docs/spec/target-profiles.md
 agents: [architect, code-reviewer]

@@ -3,7 +3,7 @@ id: M0-03
 title: Write ADR-0002 Rust as the language of core, server and CLI
 milestone: M0
 layer: docs
-status: in-review
+status: done
 depends_on: []
 spec: none
 agents: [architect, code-reviewer]

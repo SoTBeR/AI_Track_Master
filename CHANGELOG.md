@@ -15,4 +15,5 @@ and the project uses [Semantic Versioning](https://semver.org/).
 - Target profile format spec (draft): versioned TOML profiles with sourced platform values.
 - Release quality targets spec (draft): RT-1..RT-5 from PLAN section 8 with measurement and milestones.
 - CONTRIBUTING.md: DCO sign-off, Conventional Commits, branch per task.
+- ADR-0003: dependency and license policy, cargo-deny rules, stack crate license table.
 - LICENSE (Apache-2.0, unmodified canonical text) and NOTICE (copyright and reserved MPL-2.0 attribution section).

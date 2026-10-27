@@ -3,7 +3,7 @@ id: M0-04
 title: Write ADR-0003 allowed dependencies, licenses and cargo-deny policy
 milestone: M0
 layer: docs
-status: todo
+status: in-review
 depends_on: [M0-03]
 spec: none
 agents: [architect, dependency-auditor, code-reviewer]
@@ -30,15 +30,15 @@ Fix the license policy (what may be linked, what needs NOTICE, what is banned) a
 
 ## Acceptance criteria
 
-- [ ] Policy matches PLAN section 2 principle 10: Apache-2.0-compatible only; no LGPL/GPL (static linking);
+- [x] Policy matches PLAN section 2 principle 10: Apache-2.0-compatible only; no LGPL/GPL (static linking);
       MPL-2.0 allowed with a NOTICE entry; ffmpeg only as a separate process; compatibility checked by cargo-deny.
-- [ ] ADR states the rules `deny.toml` must enforce (licenses, bans, advisories, sources) precisely enough for
+- [x] ADR states the rules `deny.toml` must enforce (licenses, bans, advisories, sources) precisely enough for
       platform-engineer to write it without further decisions.
-- [ ] Stack crate table lists crate, license, source URL and access date; any crate whose license conflicts
+- [x] Stack crate table lists crate, license, source URL and access date; any crate whose license conflicts
       with the policy is flagged as an open question (PLAN section 4: "Названия крейтов, их версии и лицензии
       подтверждаются в M0 через cargo-deny").
-- [ ] ADR notes that Cargo.lock is committed and an SBOM is produced per release (PLAN section 11).
-- [ ] `docs/adr/README.md` index updated.
+- [x] ADR notes that Cargo.lock is committed and an SBOM is produced per release (PLAN section 11).
+- [x] `docs/adr/README.md` index updated.
 
 ## Plan references
 
