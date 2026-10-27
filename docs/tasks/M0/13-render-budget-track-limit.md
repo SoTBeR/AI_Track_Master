@@ -3,7 +3,7 @@ id: M0-13
 title: Fix the render-time budget and maximum track count (maintainer)
 milestone: M0
 layer: docs
-status: in-review
+status: done
 depends_on: [M0-12]
 spec: docs/spec/release-targets.md
 agents: [architect, code-reviewer]

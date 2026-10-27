@@ -3,7 +3,7 @@ id: M0-04
 title: Write ADR-0003 allowed dependencies, licenses and cargo-deny policy
 milestone: M0
 layer: docs
-status: in-review
+status: done
 depends_on: [M0-03]
 spec: none
 agents: [architect, dependency-auditor, code-reviewer]
