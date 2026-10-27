@@ -12,4 +12,5 @@ and the project uses [Semantic Versioning](https://semver.org/).
 - ADR-0001: working name AI Track Master (AITM), `aitm-` crate prefix, binary `aitm`.
 - ADR-0002: Rust as the language of core, server and CLI; toolchain Rust stable 1.99.1.
 - Session model spec (draft): tracks, buses, master bus, versions and rollback, write-path rules.
+- Target profile format spec (draft): versioned TOML profiles with sourced platform values.
 - LICENSE (Apache-2.0, unmodified canonical text) and NOTICE (copyright and reserved MPL-2.0 attribution section).

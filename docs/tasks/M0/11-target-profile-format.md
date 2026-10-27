@@ -3,7 +3,7 @@ id: M0-11
 title: Specify the target profile format
 milestone: M0
 layer: docs
-status: todo
+status: in-review
 depends_on: []
 spec: docs/spec/target-profiles.md
 agents: [architect, code-reviewer]
@@ -28,14 +28,14 @@ so the engine (M6) and MCP resources (M4) read targets as data, never from code.
 
 ## Acceptance criteria
 
-- [ ] Profiles are versioned data in `profiles/`, not code (PLAN section 3 "Профили целей"; section 8 last paragraph).
-- [ ] Every platform value carries its source (official documentation URL) and access date, and the spec
+- [x] Profiles are versioned data in `profiles/`, not code (PLAN section 3 "Профили целей"; section 8 last paragraph).
+- [x] Every platform value carries its source (official documentation URL) and access date, and the spec
       requires checking current documentation on update (PLAN section 8; section 13 last item).
-- [ ] Material profiles hold only aggregated curves, never audio (PLAN section 3 "Профили целей").
-- [ ] The format expresses bounded target shifts for intent and reference (PLAN section 3 stage 4).
-- [ ] The format can be exposed as an MCP resource "цели по платформам" (PLAN section 6 "Ресурсы и промпты").
-- [ ] Example snippets in the spec use clearly fake placeholder values, not real platform numbers.
-- [ ] `docs/spec/README.md` updated if it lists specs.
+- [x] Material profiles hold only aggregated curves, never audio (PLAN section 3 "Профили целей").
+- [x] The format expresses bounded target shifts for intent and reference (PLAN section 3 stage 4).
+- [x] The format can be exposed as an MCP resource "цели по платформам" (PLAN section 6 "Ресурсы и промпты").
+- [x] Example snippets in the spec use clearly fake placeholder values, not real platform numbers.
+- [x] `docs/spec/README.md` updated if it lists specs.
 
 ## Plan references
 
@@ -48,3 +48,5 @@ so the engine (M6) and MCP resources (M4) read targets as data, never from code.
 ## Notes
 
 - File syntax (TOML, JSON, YAML) is a decision; if it is architectural, record it in an ADR in the same task.
+- Decision (fix round 1): the syntax ADR is deferred to M6, to be written before the profile loader task
+  (together with the parser-crate ADR). The spec keeps TOML 1.0 as the proposal, marked "pending ADR in M6".
