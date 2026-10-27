@@ -3,7 +3,7 @@ id: M0-05
 title: Write the session model spec
 milestone: M0
 layer: docs
-status: todo
+status: in-review
 depends_on: []
 spec: docs/spec/session.md
 agents: [architect, code-reviewer]
@@ -25,16 +25,16 @@ Write `docs/spec/session.md`: the session model (tracks, buses, master bus, vers
 
 ## Acceptance criteria
 
-- [ ] Spec covers "модель сессии, дорожки, шины, версии" (PLAN section 14 item 2).
-- [ ] A session consists of tracks, buses and a master bus; a plain stereo file is a one-track session
+- [x] Spec covers "модель сессии, дорожки, шины, версии" (PLAN section 14 item 2).
+- [x] A session consists of tracks, buses and a master bus; a plain stereo file is a one-track session
       (PLAN section 2 principle 1).
-- [ ] Source files are never modified; every change creates a session version with rollback
+- [x] Source files are never modified; every change creates a session version with rollback
       (PLAN section 2 principle 7); rollback returns the previous state bit-for-bit (PLAN section 9, M3 acceptance).
-- [ ] Processing format is 64-bit float at the source sample rate up to 192 kHz (PLAN sections 2 principle 4, 13).
-- [ ] Storage is SQLite plus files (PLAN section 4, row "Хранение"); writes only inside the project folder
+- [x] Processing format is 64-bit float at the source sample rate up to 192 kHz (PLAN sections 2 principle 4, 13).
+- [x] Storage is SQLite plus files (PLAN section 4, row "Хранение"); writes only inside the project folder
       (PLAN section 6 "Ограничения безопасности").
-- [ ] Ambiguities are listed as open questions in the spec, not resolved by invention.
-- [ ] `docs/spec/README.md` updated if it lists specs.
+- [x] Ambiguities are listed as open questions in the spec, not resolved by invention.
+- [x] `docs/spec/README.md` updated if it lists specs.
 
 ## Plan references
 
