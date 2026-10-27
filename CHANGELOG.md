@@ -14,4 +14,5 @@ and the project uses [Semantic Versioning](https://semver.org/).
 - Session model spec (draft): tracks, buses, master bus, versions and rollback, write-path rules.
 - Target profile format spec (draft): versioned TOML profiles with sourced platform values.
 - Release quality targets spec (draft): RT-1..RT-5 from PLAN section 8 with measurement and milestones.
+- CONTRIBUTING.md: DCO sign-off, Conventional Commits, branch per task.
 - LICENSE (Apache-2.0, unmodified canonical text) and NOTICE (copyright and reserved MPL-2.0 attribution section).

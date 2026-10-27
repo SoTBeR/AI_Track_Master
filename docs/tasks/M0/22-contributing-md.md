@@ -3,7 +3,7 @@ id: M0-22
 title: Add a short CONTRIBUTING.md (DCO, Conventional Commits, branch per task)
 milestone: M0
 layer: platform
-status: todo
+status: in-review
 depends_on: [M0-02]
 spec: none
 agents: [platform-engineer, code-reviewer]
@@ -26,13 +26,13 @@ commit, pointing to `AGENTS.md` for everything else.
 
 ## Acceptance criteria
 
-- [ ] `CONTRIBUTING.md` states that contributions use DCO sign-off instead of a CLA and shows `git commit -s`
+- [x] `CONTRIBUTING.md` states that contributions use DCO sign-off instead of a CLA and shows `git commit -s`
       (PLAN section 11: "Для вкладов используется DCO (подпись Signed-off-by) вместо CLA").
-- [ ] It states the Conventional Commits format and the branch-per-task naming exactly as in `AGENTS.md` "Git",
+- [x] It states the Conventional Commits format and the branch-per-task naming exactly as in `AGENTS.md` "Git",
       without restating or contradicting other AGENTS.md rules (it links to them instead).
-- [ ] It states that contributions are under Apache-2.0 (PLAN section 1, row "Цель проекта"; LICENSE from M0-02).
-- [ ] The document is short (about one screen) and in English.
-- [ ] `CHANGELOG.md` "Unreleased" updated.
+- [x] It states that contributions are under Apache-2.0 (PLAN section 1, row "Цель проекта"; LICENSE from M0-02).
+- [x] The document is short (about one screen) and in English.
+- [x] `CHANGELOG.md` "Unreleased" updated.
 
 ## Plan references
 
