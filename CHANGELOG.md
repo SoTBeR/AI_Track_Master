@@ -18,3 +18,4 @@ and the project uses [Semantic Versioning](https://semver.org/).
 - ADR-0003: dependency and license policy, cargo-deny rules, stack crate license table.
 - Performance targets PT-1..PT-4 (provisional): reference PC, 64 tracks, render budgets.
 - LICENSE (Apache-2.0, unmodified canonical text) and NOTICE (copyright and reserved MPL-2.0 attribution section).
+- Cargo workspace: `aitm` binary (crates/cli) and `aitm-core` library, pinned toolchain 1.99.1, `deny.toml` per ADR-0003, committed `Cargo.lock`.

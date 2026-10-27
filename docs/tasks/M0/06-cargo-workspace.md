@@ -3,7 +3,7 @@ id: M0-06
 title: Create the Cargo workspace, deny.toml and the single binary crate
 milestone: M0
 layer: platform
-status: todo
+status: in-review
 depends_on: [M0-01, M0-02, M0-04]
 spec: none
 agents: [test-author, platform-engineer, code-reviewer]
@@ -28,14 +28,14 @@ encoding ADR-0003, so CI (M0-07) has something to build and check.
 
 ## Acceptance criteria
 
-- [ ] `cargo build --workspace` produces one binary with the name from M0-01 (PLAN section 2 "Модель процессов";
+- [x] `cargo build --workspace` produces one binary with the name from M0-01 (PLAN section 2 "Модель процессов";
       section 9 M0 acceptance "собирается один бинарник").
-- [ ] `cargo fmt --all --check`, `cargo clippy --workspace --all-targets -- -D warnings`, tests and
+- [x] `cargo fmt --all --check`, `cargo clippy --workspace --all-targets -- -D warnings`, tests and
       `cargo deny check` pass locally (PLAN section 11, stage "Проверка стиля").
-- [ ] `deny.toml` encodes every rule ADR-0003 lists for cargo-deny (PLAN section 2 principle 10).
-- [ ] `Cargo.lock` is committed (PLAN section 11, additional items).
-- [ ] No third-party dependencies are added.
-- [ ] `CHANGELOG.md` "Unreleased" updated.
+- [x] `deny.toml` encodes every rule ADR-0003 lists for cargo-deny (PLAN section 2 principle 10).
+- [x] `Cargo.lock` is committed (PLAN section 11, additional items).
+- [x] No third-party dependencies are added.
+- [x] `CHANGELOG.md` "Unreleased" updated.
 
 ## Plan references
 

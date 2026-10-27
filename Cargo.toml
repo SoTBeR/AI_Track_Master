@@ -1,0 +1,20 @@
+[workspace]
+resolver = "3"
+members = ["crates/core", "crates/cli"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "Apache-2.0"
+rust-version = "1.99"
+repository = "https://github.com/sotber/AI_Track_Master"
+
+# Warnings are turned into errors by `-D warnings` on every clippy run (AGENTS.md "Commands", CI in M0-07),
+# so local `cargo build` / `cargo test` only warn.
+[workspace.lints.rust]
+unsafe_code = "forbid"
+missing_docs = "warn"
+
+[workspace.lints.clippy]
+dbg_macro = "warn"
+todo = "warn"

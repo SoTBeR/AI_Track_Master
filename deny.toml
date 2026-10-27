@@ -1,0 +1,49 @@
+# Policy from docs/adr/0003-dependency-license-policy.md, section 3.
+
+[graph]
+all-features = true
+
+[licenses]
+allow = [
+  "Apache-2.0", "MIT", "BSD-2-Clause", "BSD-3-Clause", "ISC", "Zlib",
+  "Unicode-3.0", "Unicode-DFS-2016", "CC0-1.0", "Unlicense",
+]
+confidence-threshold = 0.93
+# Exact crate names; no wildcards. New entries only via ADR.
+exceptions = [
+  { crate = "symphonia",              allow = ["MPL-2.0"] },
+  { crate = "symphonia-core",         allow = ["MPL-2.0"] },
+  { crate = "symphonia-metadata",     allow = ["MPL-2.0"] },
+  { crate = "symphonia-common",       allow = ["MPL-2.0"] },
+  { crate = "symphonia-bundle-flac",  allow = ["MPL-2.0"] },
+  { crate = "symphonia-codec-adpcm",  allow = ["MPL-2.0"] },
+  { crate = "symphonia-codec-pcm",    allow = ["MPL-2.0"] },
+  { crate = "symphonia-codec-vorbis", allow = ["MPL-2.0"] },
+  { crate = "symphonia-format-mkv",   allow = ["MPL-2.0"] },
+  { crate = "symphonia-format-ogg",   allow = ["MPL-2.0"] },
+  { crate = "symphonia-format-riff",  allow = ["MPL-2.0"] },
+  { crate = "assert_no_alloc",        allow = ["BSD-1-Clause"] },  # dev-dependency only
+]
+
+[advisories]
+unmaintained = "all"
+unsound = "all"
+yanked = "deny"
+# Every entry: { id = "RUSTSEC-YYYY-NNNN", reason = "<why> (ADR-NNNN)" }. Empty in M0.
+ignore = []
+
+[bans]
+multiple-versions = "warn"
+wildcards = "deny"
+allow-wildcard-paths = true
+deny = [
+  { crate = "ffmpeg-next" }, { crate = "ffmpeg-sys-next" }, { crate = "ffmpeg-sys" },
+  { crate = "ffmpeg-the-third" }, { crate = "ffmpeg-sys-the-third" },
+  { crate = "rsmpeg" }, { crate = "rusty_ffmpeg" }, { crate = "ac-ffmpeg" },
+]
+
+[sources]
+unknown-registry = "deny"
+unknown-git = "deny"
+allow-registry = ["https://github.com/rust-lang/crates.io-index"]
+allow-git = []
