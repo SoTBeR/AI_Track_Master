@@ -11,3 +11,4 @@ public MCP/CLI schemas, every change to `unsafe` policy.
 
 | ADR | Title | Status |
 |---|---|---|
+| [0001](0001-working-name.md) | Working name, package names and binary name | accepted |

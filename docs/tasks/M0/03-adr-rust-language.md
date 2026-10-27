@@ -1,6 +1,6 @@
 ---
 id: M0-03
-title: Write ADR-0001 Rust as the language of core, server and CLI
+title: Write ADR-0002 Rust as the language of core, server and CLI
 milestone: M0
 layer: docs
 status: todo
@@ -9,7 +9,7 @@ spec: none
 agents: [architect, code-reviewer]
 ---
 
-# Write ADR-0001 Rust as the language of core, server and CLI
+# Write ADR-0002 Rust as the language of core, server and CLI
 
 ## Goal
 
@@ -18,7 +18,7 @@ consequences and risks, so later sessions do not relitigate it.
 
 ## Scope
 
-- In: `docs/adr/0001-rust-language.md` from `docs/templates/adr.md`; index entry in `docs/adr/README.md`.
+- In: `docs/adr/0002-rust-language.md` from `docs/templates/adr.md`; index entry in `docs/adr/README.md`.
 - Out: dependency/license policy (M0-04); MCP SDK verification results (M0-10).
 
 ## Acceptance criteria
@@ -44,3 +44,6 @@ consequences and risks, so later sessions do not relitigate it.
 ## Notes
 
 - The MCP SDK tier must be checked against the live conformance page, not from memory.
+- Numbering: repository ADR numbers follow creation order in `docs/adr/` (ADR-0001 is the working
+  name, M0-01). The plan's "ADR-001" (Rust) = ADR-0002 and the plan's "ADR-002" (dependencies and
+  licenses) = ADR-0003. Quotes of `docs/PLAN.md` keep the plan's labels.

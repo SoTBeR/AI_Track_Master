@@ -9,3 +9,4 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ### Added
 
 - Agent infrastructure: AGENTS.md, CLAUDE.md, Claude Code agents, skills and settings.
+- ADR-0001: working name AI Track Master (AITM), `aitm-` crate prefix, binary `aitm`.

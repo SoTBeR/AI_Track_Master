@@ -40,7 +40,7 @@ for the M0 LoudnessMeter pilot (M0-19) and the M1 acceptance.
       pinned SHA-256 and fails loudly on mismatch; tests for those cases are skipped with an explicit reason
       when the files are absent (a skip, not a pass), and the skip is visible in the pytest summary.
 - [ ] True-peak expected values follow BS.1770 Annex 2 (oversampled true-peak) as cited in the spec.
-- [ ] pytest and ruff green in CI; pyloudnorm reviewed by dependency-auditor and allowed by ADR-0002.
+- [ ] pytest and ruff green in CI; pyloudnorm reviewed by dependency-auditor and allowed by ADR-0003.
 - [ ] `CHANGELOG.md` "Unreleased" updated.
 
 ## Plan references

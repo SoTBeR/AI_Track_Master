@@ -3,7 +3,7 @@ id: M0-01
 title: Record the working name and package name (maintainer)
 milestone: M0
 layer: docs
-status: todo
+status: in-review
 depends_on: []
 spec: none
 agents: [architect, code-reviewer]
@@ -24,11 +24,11 @@ so that the workspace, binary, NOTICE and distribution channels use one name fro
 
 ## Acceptance criteria
 
-- [ ] Working name and package name chosen by the maintainer (PLAN section 13: "Рабочее название и имя пакета выбираются в M0").
-- [ ] ADR records the project name, the Cargo package name and the binary name.
-- [ ] ADR records that the package name is available on the planned install channels
+- [x] Working name and package name chosen by the maintainer (PLAN section 13: "Рабочее название и имя пакета выбираются в M0").
+- [x] ADR records the project name, the Cargo package name and the binary name.
+- [x] ADR records that the package name is available on the planned install channels
       (crates.io for `cargo install`, Homebrew formula name) as checked on a stated date (PLAN section 4, "Дистрибуция").
-- [ ] `docs/adr/README.md` index updated.
+- [x] `docs/adr/README.md` index updated.
 
 ## Plan references
 

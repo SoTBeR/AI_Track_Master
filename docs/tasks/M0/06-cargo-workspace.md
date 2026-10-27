@@ -14,12 +14,12 @@ agents: [test-author, platform-engineer, code-reviewer]
 ## Goal
 
 Create the Cargo workspace with the platform crates and one binary that builds, plus `deny.toml`
-encoding ADR-0002, so CI (M0-07) has something to build and check.
+encoding ADR-0003, so CI (M0-07) has something to build and check.
 
 ## Scope
 
 - In: root `Cargo.toml` (workspace, shared lints: clippy warnings as errors), committed `Cargo.lock`,
-  `rust-toolchain.toml` pinned to the version in ADR-0001, `deny.toml` per ADR-0002, `crates/core` (empty
+  `rust-toolchain.toml` pinned to the version in ADR-0002, `deny.toml` per ADR-0003, `crates/core` (empty
   library with doc comment), `crates/cli` (binary named per M0-01 that exits 0), a smoke test that the
   binary runs; root `.gitignore` covering `target/` and the generated-audio cache directory `reference/.cache/`
   used by M0-15 and M0-16 (generated test audio is never committed); `CHANGELOG.md` entry.
@@ -32,7 +32,7 @@ encoding ADR-0002, so CI (M0-07) has something to build and check.
       section 9 M0 acceptance "собирается один бинарник").
 - [ ] `cargo fmt --all --check`, `cargo clippy --workspace --all-targets -- -D warnings`, tests and
       `cargo deny check` pass locally (PLAN section 11, stage "Проверка стиля").
-- [ ] `deny.toml` encodes every rule ADR-0002 lists for cargo-deny (PLAN section 2 principle 10).
+- [ ] `deny.toml` encodes every rule ADR-0003 lists for cargo-deny (PLAN section 2 principle 10).
 - [ ] `Cargo.lock` is committed (PLAN section 11, additional items).
 - [ ] No third-party dependencies are added.
 - [ ] `CHANGELOG.md` "Unreleased" updated.

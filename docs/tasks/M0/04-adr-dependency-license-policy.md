@@ -1,6 +1,6 @@
 ---
 id: M0-04
-title: Write ADR-0002 allowed dependencies, licenses and cargo-deny policy
+title: Write ADR-0003 allowed dependencies, licenses and cargo-deny policy
 milestone: M0
 layer: docs
 status: todo
@@ -9,7 +9,7 @@ spec: none
 agents: [architect, dependency-auditor, code-reviewer]
 ---
 
-# Write ADR-0002 allowed dependencies, licenses and cargo-deny policy
+# Write ADR-0003 allowed dependencies, licenses and cargo-deny policy
 
 ## Goal
 
@@ -18,7 +18,7 @@ Fix the license policy (what may be linked, what needs NOTICE, what is banned) a
 
 ## Scope
 
-- In: `docs/adr/0002-dependency-license-policy.md`; index entry in `docs/adr/README.md`.
+- In: `docs/adr/0003-dependency-license-policy.md`; index entry in `docs/adr/README.md`.
   The ADR defines: allowed license list, MPL-2.0 handling (NOTICE entry), banned licenses (GPL, LGPL,
   any copyleft requiring source release of the static binary), ffmpeg only as a subprocess,
   advisory policy (cargo-audit / cargo-deny advisories), the rule "new dependency = dependency-auditor review + ADR",

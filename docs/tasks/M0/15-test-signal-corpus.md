@@ -35,7 +35,7 @@ Deterministic Python generators for the basic test signals used by DSP and analy
 - [ ] Sample rates cover the supported range 44.1-192 kHz where the spec requires it (PLAN section 7 "Правила DSP-кода").
 - [ ] Each signal's properties are verified against its analytic definition (independent reference: closed-form
       formulas; logarithmic sweep per Farina, AES 108th Convention 2000, if the spec chooses an exponential sweep).
-- [ ] Python dependencies reviewed by dependency-auditor and allowed by ADR-0002.
+- [ ] Python dependencies reviewed by dependency-auditor and allowed by ADR-0003.
 - [ ] `CHANGELOG.md` "Unreleased" updated.
 
 ## Plan references
