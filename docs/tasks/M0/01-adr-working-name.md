@@ -3,7 +3,7 @@ id: M0-01
 title: Record the working name and package name (maintainer)
 milestone: M0
 layer: docs
-status: in-review
+status: done
 depends_on: []
 spec: none
 agents: [architect, code-reviewer]

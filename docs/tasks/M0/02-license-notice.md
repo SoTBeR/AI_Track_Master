@@ -3,7 +3,7 @@ id: M0-02
 title: Add LICENSE (Apache-2.0) and NOTICE
 milestone: M0
 layer: platform
-status: todo
+status: in-review
 depends_on: [M0-01]
 spec: none
 agents: [platform-engineer, code-reviewer]
@@ -24,12 +24,12 @@ Put the project under Apache-2.0 with a NOTICE file that will later list MPL-2.0
 
 ## Acceptance criteria
 
-- [ ] `LICENSE` contains the unmodified Apache License, Version 2.0 text (PLAN section 1, "Цель проекта"; section 14 item 1).
-- [ ] `NOTICE` exists, names the project from M0-01 and has a section for MPL-2.0 dependencies
+- [x] `LICENSE` contains the unmodified Apache License, Version 2.0 text (PLAN section 1, "Цель проекта"; section 14 item 1).
+- [x] `NOTICE` exists, names the project from M0-01 and has a section for MPL-2.0 dependencies
       (PLAN section 2 principle 10: "MPL-2.0 допускается с записью в NOTICE").
-- [ ] `NOTICE` copyright line reads exactly "Copyright <year> The <project name> Authors", with
+- [x] `NOTICE` copyright line reads exactly "Copyright <year> The <project name> Authors", with
       `<project name>` taken from the M0-01 ADR and `<year>` the year of the commit (maintainer decision).
-- [ ] `CHANGELOG.md` "Unreleased" updated.
+- [x] `CHANGELOG.md` "Unreleased" updated.
 
 ## Plan references
 
