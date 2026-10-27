@@ -1,0 +1,41 @@
+//! {{Name}}: built-in {{category}} plugin.
+//!
+//! Spec: docs/spec/plugin-{{kebab}}.md
+//! Reference: reference/plugins/{{snake}}.py
+#![forbid(unsafe_code)]
+
+mod params;
+
+pub use params::{{Name}}Params;
+
+/// {{Name}} plugin state. All buffers are allocated in `new`/`prepare`, never in `process`.
+pub struct {{Name}} {
+    params: {{Name}}Params,
+    sample_rate_hz: f64,
+}
+
+impl {{Name}} {
+    pub fn new(sample_rate_hz: f64) -> Self {
+        Self { params: {{Name}}Params::default(), sample_rate_hz }
+    }
+
+    /// Process one block in place. No allocation, locks or syscalls.
+    pub fn process(&mut self, _block: &mut [&mut [f64]]) {
+        todo!("implemented by dsp-engineer via /task")
+    }
+
+    /// Return measurements for the agent and the engine.
+    pub fn analyze(&self) {
+        todo!("implemented by dsp-engineer via /task")
+    }
+
+    pub fn latency_samples(&self) -> usize {
+        0
+    }
+
+    pub fn tail_samples(&self) -> usize {
+        0
+    }
+}
+
+// TODO(M2): implement the `plugin_sdk::Plugin` trait once the SDK exists; the SDK is authoritative.

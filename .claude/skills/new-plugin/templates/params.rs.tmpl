@@ -1,0 +1,15 @@
+//! Parameter schema for {{Name}}: name, type, range, unit, default, scale.
+//! The schema drives MCP tool schema, validation and CLI help (docs/PLAN.md section 7).
+
+/// TODO: replace the example parameter with the ones from the spec.
+#[derive(Debug, Clone, PartialEq)]
+pub struct {{Name}}Params {
+    /// Output gain. Range -24..=24 dB, default 0 dB, linear scale.
+    pub output_gain_db: f64,
+}
+
+impl Default for {{Name}}Params {
+    fn default() -> Self {
+        Self { output_gain_db: 0.0 }
+    }
+}

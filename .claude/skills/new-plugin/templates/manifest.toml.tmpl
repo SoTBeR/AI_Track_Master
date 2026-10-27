@@ -1,0 +1,17 @@
+# Plugin manifest. Format provisional until the plugin-sdk ADR (M2) fixes it.
+id = "{{kebab}}"
+name = "{{Name}}"
+version = "0.1.0"
+category = "{{category}}"   # analysis | mixing | mastering
+schema_version = 1
+
+[agent]
+# Description for the agent (docs/PLAN.md section 7).
+when_to_use = "TODO"
+typical_values = "TODO"
+side_effects = "TODO"
+
+[processing]
+latency_samples = 0          # TODO: from spec
+tail_samples = 0             # TODO: from spec
+oversampling = 1             # nonlinear blocks: 4-8
