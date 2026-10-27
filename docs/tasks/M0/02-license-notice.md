@@ -3,7 +3,7 @@ id: M0-02
 title: Add LICENSE (Apache-2.0) and NOTICE
 milestone: M0
 layer: platform
-status: in-review
+status: done
 depends_on: [M0-01]
 spec: none
 agents: [platform-engineer, code-reviewer]
