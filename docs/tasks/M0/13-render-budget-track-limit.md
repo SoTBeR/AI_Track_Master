@@ -3,7 +3,7 @@ id: M0-13
 title: Fix the render-time budget and maximum track count (maintainer)
 milestone: M0
 layer: docs
-status: todo
+status: in-review
 depends_on: [M0-12]
 spec: docs/spec/release-targets.md
 agents: [architect, code-reviewer]
@@ -25,12 +25,12 @@ based on measurements on real projects, in the release targets spec.
 
 ## Acceptance criteria
 
-- [ ] Render-time budget for a 10-minute track and maximum track count are recorded with the measurement basis
+- [x] Render-time budget for a 10-minute track and maximum track count are recorded with the measurement basis
       (PLAN section 13: "фиксируются в M0 по измерениям на реальных проектах"; section 14 item 6).
-- [ ] The track limit is consistent with M8 acceptance (a project of 32 or more tracks renders within the M0
+- [x] The track limit is consistent with M8 acceptance (a project of 32 or more tracks renders within the M0
       budget) and the budget with M9 acceptance (10-minute track in maximum-quality mode within target time)
       (PLAN section 9 M8, M9).
-- [ ] Reference hardware for the budget is stated, since time depends on it.
+- [x] Reference hardware for the budget is stated, since time depends on it.
 
 ## Plan references
 

@@ -2,6 +2,7 @@
 
 - Status: accepted
 - Date: 2026-10-27
+- Amended: 2026-10-27 — GitHub repository recorded (sotber/AI_Track_Master)
 - Deciders: maintainer
 
 ## Context
@@ -37,7 +38,7 @@ The maintainer chose the following names.
 | Published crate for `cargo install` | `aitm` |
 | Binary name | `aitm` |
 | Homebrew formula name | `aitm` |
-| GitHub repository name | `ai-track-master` |
+| GitHub repository | `sotber/AI_Track_Master` (see "GitHub repository" below) |
 
 Directory names under `crates/` stay as in AGENTS.md (`crates/core`, `crates/cli`, ...); only the
 Cargo `package.name` carries the prefix. Directory names are snake_case and package names are
@@ -51,6 +52,17 @@ The user-facing install command is `cargo install aitm`, producing the binary `a
 maintainer's default is that `crates/cli` is published directly as package `aitm` (binary `aitm`),
 with no separate `aitm-cli` wrapper crate. Final wiring of the manifest (`package.name`, `[[bin]]`)
 is done in task M0-06.
+
+### GitHub repository
+
+Resolved by the maintainer (2026-10-27): the repository is https://github.com/sotber/AI_Track_Master,
+owned by the user account `sotber`, private for now. Its name `AI_Track_Master` differs from the
+planned `ai-track-master`; the existing name is kept. GitHub resolves owner and repository names
+case-insensitively, so `github.com/sotber/ai_track_master` reaches the same repository; the
+underscores are not interchangeable with hyphens, so `github.com/sotber/ai-track-master` does not.
+Renaming to `ai-track-master` is optional and, if done, should happen before the repository is made
+public (GitHub redirects renamed repositories, but published links, badges and cargo-dist/Homebrew
+metadata are easier to get right once). Crate, binary and formula names above are unaffected.
 
 ### Availability check (2026-10-27)
 
@@ -85,7 +97,8 @@ Product-name clash search (web search and GitHub repository search, 2026-10-27):
 - GitHub has no repository named exactly `ai-track-master`; similar names exist
   (`Matticusnicholas/Ai-Track-Masterer`, `eriklau/TrackMaster-AI`, `CHAIMAABDELAZIZ/AI-Master-track`
   and others), none of them a published mastering product. GitHub repository names are unique only
-  per owner, so the final check depends on the owner account (open question below).
+  per owner; the repository now exists as `sotber/AI_Track_Master` (see "GitHub repository"), so
+  there is no clash under that owner.
 - "AITM" / "AiTM" is widely used in information security for "adversary-in-the-middle" phishing
   (Microsoft Security blog, CISA/CIS advisories, many vendor glossaries), and in machine learning
   for the "AITM" multi-task learning framework (KDD 2021; GitHub `xidongbo/AITM`). These are not
@@ -96,7 +109,7 @@ remain free only until someone publishes them.
 
 ## Alternatives
 
-- **Binary name `ai-track-master`** (matching the GitHub repository): unambiguous and free on all
+- **Binary name `ai-track-master`** (matching the originally planned GitHub repository name): unambiguous and free on all
   checked channels, but long to type in shells and in MCP client configuration. Rejected in favor
   of `aitm`; it remains a fallback if `aitm` is taken before first publication.
 - **Published crate and Homebrew formula `ai-track-master`** with binary `aitm`: avoids the
@@ -132,8 +145,9 @@ remain free only until someone publishes them.
 
 ## Open questions
 
-- GitHub owner account (user or organization) for the `ai-track-master` repository: pending the
-  maintainer. The GitHub name-clash check is final only once the owner is known.
+- None open. Resolved 2026-10-27: GitHub owner is the user account `sotber`; repository
+  `sotber/AI_Track_Master` (private for now), existing name kept; renaming to `ai-track-master`
+  before going public is optional (see "GitHub repository").
 
 ## Sources (accessed 2026-10-27)
 
