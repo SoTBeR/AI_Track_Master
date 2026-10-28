@@ -21,3 +21,4 @@ and the project uses [Semantic Versioning](https://semver.org/).
 - CI workflow (GitHub Actions): fmt, clippy, cargo-deny, cargo-audit, dev-only guard, nextest on Linux/Windows/macOS arm64+x86_64 with binary artifacts, Python checks; required checks listed in `.github/BRANCH_PROTECTION.md`.
 - `dev` integration branch: task branches merge into `dev`, `main` changes only through a maintainer PR from `dev`; CI also runs on pushes to `dev`; Claude Code push guard hook allows pushing `dev` only.
 - Cargo workspace: `aitm` binary (crates/cli) and `aitm-core` library, pinned toolchain 1.99.1, `deny.toml` per ADR-0003, committed `Cargo.lock`.
+- clap-based CLI entry point: `aitm --version`, `--help`, `mcp serve` placeholder (exit 1 until M0-09); no arguments prints help with exit 0; exit codes 0 success, 1 runtime error, 2 usage error; ADR-0005.

@@ -3,7 +3,7 @@ id: M0-08
 title: Add the clap-based CLI entry point with `mcp serve`
 milestone: M0
 layer: platform
-status: todo
+status: done
 depends_on: [M0-07]
 spec: docs/spec/cli-entrypoint.md
 agents: [architect, test-author, platform-engineer, dependency-auditor, code-reviewer]
@@ -24,13 +24,13 @@ subcommand placeholder, so the probe MCP server (M0-09) runs from the same binar
 
 ## Acceptance criteria
 
-- [ ] CLI is built on clap (PLAN section 4, row "CLI").
-- [ ] `mcp serve` exists as the subcommand name from PLAN section 6 "CLI".
-- [ ] Errors are reported with a reason and a non-zero exit code, never a panic (AGENTS.md "Code style";
+- [x] CLI is built on clap (PLAN section 4, row "CLI").
+- [x] `mcp serve` exists as the subcommand name from PLAN section 6 "CLI".
+- [x] Errors are reported with a reason and a non-zero exit code, never a panic (AGENTS.md "Code style";
       PLAN section 3 "Тихих сбоев нет").
-- [ ] Accepted ADR for the clap dependency (AGENTS.md "Prohibitions"; PLAN section 2 principle 10).
+- [x] Accepted ADR for the clap dependency (AGENTS.md "Prohibitions"; PLAN section 2 principle 10).
 - [ ] Tests written first pass on all three OSes in CI.
-- [ ] `CHANGELOG.md` "Unreleased" updated.
+- [x] `CHANGELOG.md` "Unreleased" updated.
 
 ## Plan references
 
