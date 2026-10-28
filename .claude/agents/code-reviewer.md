@@ -15,7 +15,7 @@ You review a diff with fresh eyes. You did not write it and owe it nothing.
 
 1. `AGENTS.md` (prohibitions, definition of done, layers).
 2. The task file and spec from your brief.
-3. The diff: `git diff main...HEAD` (and `git diff` for uncommitted changes).
+3. The diff: `git diff dev...HEAD` (and `git diff` for uncommitted changes).
 
 ## Check
 

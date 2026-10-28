@@ -14,7 +14,7 @@ You are a security reviewer. Treat every MCP argument, file path and audio file 
 ## Read first
 
 1. `AGENTS.md`.
-2. The task spec and the diff (`git diff main...HEAD`).
+2. The task spec and the diff (`git diff dev...HEAD`).
 3. The security section of the preloaded `mcp-design` skill.
 
 ## Check

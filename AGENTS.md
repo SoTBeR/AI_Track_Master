@@ -100,7 +100,7 @@ cargo deny check                                          # licenses, bans, advi
 cargo audit                                               # vulnerabilities
 python3 -m pytest reference/                              # reference implementations
 ruff check reference/                                     # Python lint
-cargo run -p eval -- golden --compare main                # golden set (TBD in M0)
+cargo run -p eval -- golden --compare dev                 # golden set (TBD in M0)
 ```
 
 "Local checks" means: fmt, clippy, tests, cargo-deny, and pytest when `reference/` changed.
@@ -139,8 +139,12 @@ cargo run -p eval -- golden --compare main                # golden set (TBD in M
 
 ## Git
 
-- One branch per task: `task/<M#>-<NN>-<slug>`. Small changes.
+- Branches: `main` (reviewed work, maintainer only), `dev` (integration), and one branch per task
+  `task/<M#>-<NN>-<slug>` created from `dev`. Small changes.
 - Conventional Commits (`feat(dsp): ...`, `fix(server): ...`, `docs(adr): ...`, `test(analysis): ...`).
 - Every commit signed off for DCO: `git commit -s`.
+- When a task's local checks and reviews pass, the main session merges the task branch into `dev`
+  with `git merge --no-ff` and pushes `dev`. Task branches stay local.
+- `main` changes only through a maintainer-merged pull request `dev` -> `main` (merge commit; no squash
+  or rebase, so `dev` and `main` never diverge). Agents never push to or merge into `main`.
 - Never force push. Never rewrite published history.
-- Never merge into `main`; the maintainer merges after review.

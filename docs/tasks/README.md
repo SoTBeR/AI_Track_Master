@@ -5,4 +5,5 @@ Milestone tasks from `docs/PLAN.md` section 9, created by `/plan-milestone <M#>`
 execution order. Run a task with `/task <path>`.
 
 Status values in frontmatter: `todo`, `in-progress`, `in-review` (committed on its
-branch, awaiting maintainer merge), `done` (merged), `blocked`.
+branch, awaiting merge into `dev`), `done` (merged into `dev`), `blocked`. The maintainer moves
+`dev` into `main` through a pull request.

@@ -60,6 +60,8 @@ owned by the user account `sotber`, private for now. Its name `AI_Track_Master` 
 planned `ai-track-master`; the existing name is kept. GitHub resolves owner and repository names
 case-insensitively, so `github.com/sotber/ai_track_master` reaches the same repository; the
 underscores are not interchangeable with hyphens, so `github.com/sotber/ai-track-master` does not.
+Update 2026-10-28: the account is now spelled `SoTBeR` (https://github.com/SoTBeR/AI_Track_Master)
+and the repository is public.
 Renaming to `ai-track-master` is optional and, if done, should happen before the repository is made
 public (GitHub redirects renamed repositories, but published links, badges and cargo-dist/Homebrew
 metadata are easier to get right once). Crate, binary and formula names above are unaffected.

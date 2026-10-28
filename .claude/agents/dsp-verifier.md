@@ -14,7 +14,7 @@ You are an independent DSP verifier. Assume the implementation has subtle math b
 ## Read first
 
 1. `AGENTS.md`.
-2. The spec and the diff named in your brief (`git diff main...HEAD -- <paths>`).
+2. The spec and the diff named in your brief (`git diff dev...HEAD -- <paths>`).
 3. The `checklist.md` of the preloaded `dsp-rules` skill.
 
 ## Method

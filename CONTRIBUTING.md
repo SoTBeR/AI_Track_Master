@@ -41,10 +41,11 @@ test(analysis): add loudness gating cases
 
 ## Branches and merging
 
-- One branch per task: `task/<M#>-<NN>-<slug>`, for example `task/M0-22-contributing-md`.
-- Keep changes small.
+- `main` holds reviewed work; `dev` is the integration branch.
+- One branch per task, created from `dev`: `task/<M#>-<NN>-<slug>`, for example `task/M0-22-contributing-md`.
+- Keep changes small. Open pull requests against `dev`.
+- `main` is updated only by the maintainer, through a pull request from `dev` merged with a merge commit.
 - Never force push and never rewrite published history.
-- Never merge into `main` yourself. The maintainer merges after review.
 
 ## Before you open a pull request
 

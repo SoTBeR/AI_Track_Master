@@ -3,7 +3,7 @@ id: M0-07
 title: Set up the CI matrix on Windows, macOS and Linux
 milestone: M0
 layer: platform
-status: in-review
+status: done
 depends_on: [M0-06]
 spec: none
 agents: [platform-engineer, dependency-auditor, code-reviewer]
@@ -31,7 +31,7 @@ and builds the probe binary on the three target OSes on every pull request.
 - [x] Matrix: Windows, macOS arm64 and x86_64, Linux x86_64 (PLAN section 11, stage "Сборка").
 - [x] Stages present: rustfmt, clippy with warnings as errors, cargo-deny, cargo-audit; ruff for Python references
       (PLAN section 11, stage "Проверка стиля"); cargo nextest and pytest (stage "Тесты").
-- [ ] CI is green on all three OSes on `main` and on a test PR; the built binary is available as an artifact
+- [x] CI is green on all three OSes on `main` and on a test PR; the built binary is available as an artifact
       per OS (PLAN section 9 M0 acceptance; section 14 item 4).
 - [x] Any failing job blocks merge (required checks configured or documented for the maintainer to enable;
       PLAN section 10 "Защитные барьеры").

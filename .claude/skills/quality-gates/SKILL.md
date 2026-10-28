@@ -42,4 +42,4 @@ Source: `docs/PLAN.md` sections 8, 10 and 11. The plan is authoritative; this is
 
 - Tolerances and manifests change only through a dedicated task with a reason, never inside the task that needs them changed.
 - Only freely licensed or own material; commit manifests and aggregates, not unlicensed audio.
-- Compare branch vs main with the same tool versions; report deltas, not only absolute values.
+- Compare branch vs dev with the same tool versions; report deltas, not only absolute values.

@@ -25,7 +25,7 @@ Return: summary, files changed, check results (one line each), open questions.
 - **executor** (dsp-engineer / engine-engineer / platform-engineer): "Make the tests in `<test paths>` pass. Do not modify tests,
   fixtures or `reference/`. No new dependencies (approved crates: `<list from ADRs or none>`). Update CHANGELOG. Run local checks."
 - **fix round**: "Round <k>/3. Fix these findings: <level, claim, evidence>. Same constraints as before. Report what changed per finding."
-- **reviewers** (code-reviewer, dsp-verifier, security-reviewer, eval-runner): "Review `git diff main...HEAD` for this task.
+- **reviewers** (code-reviewer, dsp-verifier, security-reviewer, eval-runner): "Review `git diff dev...HEAD` for this task.
   Findings with level blocker|major|minor and evidence. Do not edit anything."
 
 ## Executor and reviewers by layer

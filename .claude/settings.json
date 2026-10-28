@@ -12,8 +12,6 @@
       "Bash(ruff *)"
     ],
     "ask": [
-      "Bash(git push)",
-      "Bash(git push *)",
       "Bash(cargo publish *)",
       "Bash(cargo install *)",
       "Bash(git reset --hard *)",
@@ -45,7 +43,15 @@
       "Read(~/.cargo/credentials*)",
       "Read(~/.config/gh/**)",
       "Read(~/.netrc)",
-      "Read(~/.git-credentials)"
+      "Read(~/.git-credentials)",
+      "Bash(git push * main)",
+      "Bash(git push * main *)",
+      "Bash(git push *:main*)",
+      "Bash(git push *refs/heads/main*)",
+      "Bash(git push --all*)",
+      "Bash(git push * --all*)",
+      "Bash(git push --mirror*)",
+      "Bash(git push * --mirror*)"
     ]
   },
   "hooks": {
@@ -57,6 +63,19 @@
             "type": "command",
             "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/rustfmt-edited.sh",
             "timeout": 15
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/git-push-guard.sh",
+            "timeout": 10,
+            "onFailure": "block"
           }
         ]
       }

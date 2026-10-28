@@ -1,13 +1,13 @@
 ---
 name: review-diff
 description: 'Run the relevant read-only reviewers in parallel on the current diff and produce a combined report.'
-argument-hint: "[base branch, default main]"
+argument-hint: "[base branch, default dev]"
 disable-model-invocation: true
 ---
 
 # Review current diff
 
-Base: `$ARGUMENTS` if given, otherwise `main`.
+Base: `$ARGUMENTS` if given, otherwise `dev`.
 
 1. Collect scope: `git diff --stat <base>...HEAD` and `git diff --stat` (uncommitted). If empty, say so and stop.
    Map changed paths to layers (AGENTS.md "Layers and owners"); find the task file and spec from the branch name if possible.

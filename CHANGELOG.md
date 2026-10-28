@@ -19,4 +19,5 @@ and the project uses [Semantic Versioning](https://semver.org/).
 - Performance targets PT-1..PT-4 (provisional): reference PC, 64 tracks, render budgets.
 - LICENSE (Apache-2.0, unmodified canonical text) and NOTICE (copyright and reserved MPL-2.0 attribution section).
 - CI workflow (GitHub Actions): fmt, clippy, cargo-deny, cargo-audit, dev-only guard, nextest on Linux/Windows/macOS arm64+x86_64 with binary artifacts, Python checks; required checks listed in `.github/BRANCH_PROTECTION.md`.
+- `dev` integration branch: task branches merge into `dev`, `main` changes only through a maintainer PR from `dev`; CI also runs on pushes to `dev`; Claude Code push guard hook allows pushing `dev` only.
 - Cargo workspace: `aitm` binary (crates/cli) and `aitm-core` library, pinned toolchain 1.99.1, `deny.toml` per ADR-0003, committed `Cargo.lock`.
