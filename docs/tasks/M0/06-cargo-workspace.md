@@ -3,7 +3,7 @@ id: M0-06
 title: Create the Cargo workspace, deny.toml and the single binary crate
 milestone: M0
 layer: platform
-status: in-review
+status: done
 depends_on: [M0-01, M0-02, M0-04]
 spec: none
 agents: [test-author, platform-engineer, code-reviewer]

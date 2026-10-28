@@ -50,3 +50,5 @@ Deterministic Python generators for the basic test signals used by DSP and analy
 - Maintainer decision: signals are generated deterministically by scripts in `reference/` and not committed
   as WAV; tests regenerate them (cache allowed in a gitignored directory). The cache directory is
   `reference/.cache/`; its root `.gitignore` entry is added by M0-06 (platform), not by reference-author.
+- CI contract (M0-07/ADR-0004): this task must add `reference/requirements.txt` with pinned versions (numpy,
+  scipy, pyloudnorm, pytest, ruff); the CI python job installs it and runs ruff + pytest once reference/ exists.
