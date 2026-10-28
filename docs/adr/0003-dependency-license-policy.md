@@ -3,6 +3,7 @@
 - Status: accepted
 - Date: 2026-10-27
 - Deciders: maintainer
+- Amended: 2026-10-28 by ADR-0004 (dev-only guard uses --target all)
 
 ## Context
 
@@ -171,7 +172,7 @@ Additional CI rules (M0-06 / CI task, platform layer):
   `wildcards = "deny"` stays as is; `allow-wildcard-paths = true` stays for the private crates and
   dev-dependencies.
 - A dev-only guard for crates excepted as dev-only (today `assert_no_alloc`): CI runs
-  `cargo tree -p aitm -e normal,build -i assert_no_alloc --locked`. Pass: the crate is absent from
+  `cargo tree -p aitm -e normal,build -i assert_no_alloc --locked --target all`. Pass: the crate is absent from
   the normal/build graph, which cargo reports as "package ID specification ... did not match any
   packages" with exit code 101; the CI step must treat exactly this outcome (or empty output) as
   success. Fail: the command prints a non-empty dependency path from the shipped binary to the crate.

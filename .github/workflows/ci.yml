@@ -1,0 +1,213 @@
+# CI for AI Track Master (M0-07). See .github/BRANCH_PROTECTION.md for the required checks.
+# Only GitHub-owned actions are used, each pinned to a full commit SHA (ADR-0003 spirit).
+# Rust comes from rustup preinstalled on the runners and honors rust-toolchain.toml.
+name: CI
+
+on:
+  pull_request:
+  merge_group:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  CARGO_TERM_COLOR: always
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  fmt:
+    name: fmt
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install the pinned Rust toolchain (rust-toolchain.toml)
+        run: |
+          rustup toolchain install --profile minimal
+          rustup show
+      - run: cargo fmt --all --check
+
+  clippy:
+    name: clippy
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install the pinned Rust toolchain (rust-toolchain.toml)
+        run: |
+          rustup toolchain install --profile minimal
+          rustup show
+      - run: cargo clippy --workspace --all-targets --locked -- -D warnings
+
+  deny:
+    name: deny
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install the pinned Rust toolchain (rust-toolchain.toml)
+        run: |
+          rustup toolchain install --profile minimal
+          rustup show
+      - name: Cache cargo-deny
+        id: cache-cargo-deny
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: |
+            ~/.cargo/bin/cargo-deny
+            ~/.cargo/bin/cargo-deny.exe
+          key: tool-${{ runner.os }}-${{ runner.arch }}-cargo-deny-0.20.2
+      - name: Install cargo-deny 0.20.2
+        if: steps.cache-cargo-deny.outputs.cache-hit != 'true'
+        run: cargo install --locked --version 0.20.2 cargo-deny
+      - run: cargo deny --locked check
+
+  audit:
+    name: audit
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install the pinned Rust toolchain (rust-toolchain.toml)
+        run: |
+          rustup toolchain install --profile minimal
+          rustup show
+      - name: Cache cargo-audit
+        id: cache-cargo-audit
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: |
+            ~/.cargo/bin/cargo-audit
+            ~/.cargo/bin/cargo-audit.exe
+          key: tool-${{ runner.os }}-${{ runner.arch }}-cargo-audit-0.22.2
+      - name: Install cargo-audit 0.22.2
+        if: steps.cache-cargo-audit.outputs.cache-hit != 'true'
+        run: cargo install --locked --version 0.22.2 cargo-audit
+      # Any advisory ignore must be mirrored from deny.toml [advisories].ignore (as `--ignore <id>`
+      # flags or .cargo/audit.toml). Currently the list is empty.
+      - run: cargo audit
+
+  dev-only-guard:
+    name: dev-only-guard
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install the pinned Rust toolchain (rust-toolchain.toml)
+        run: |
+          rustup toolchain install --profile minimal
+          rustup show
+      # ADR-0003 section 3: crates excepted as dev-only must not be in the shipped graph.
+      # Pass: exit 101 with "did not match any packages", or exit 0 with empty output.
+      # Fail: a non-empty dependency path, or any other error.
+      - name: Guard assert_no_alloc is dev-only
+        run: |
+          errf=$(mktemp); set +e
+          out=$(cargo tree -p aitm -e normal,build --target all -i assert_no_alloc --locked 2>"$errf")
+          rc=$?
+          set -e
+          err=$(cat "$errf")
+          echo "exit code: $rc"; echo "stdout: $out"; echo "stderr: $err"
+          if [ "$rc" -eq 101 ] && [[ "$err" == *"did not match any packages"* ]] && [ -z "$out" ]; then
+            echo "OK: assert_no_alloc is not in the normal/build graph of aitm"
+          elif [ "$rc" -eq 0 ] && [ -z "$out" ]; then
+            echo "OK: empty output"
+          else
+            echo "::error::assert_no_alloc reachable from aitm normal/build graph, or cargo tree failed"
+            exit 1
+          fi
+
+  test:
+    name: test (${{ matrix.name }})
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: linux-x86_64
+            runner: ubuntu-24.04
+            exe: aitm
+          - name: windows-x86_64
+            runner: windows-2025
+            exe: aitm.exe
+          - name: macos-arm64
+            runner: macos-15
+            exe: aitm
+          - name: macos-x86_64
+            runner: macos-15-intel
+            exe: aitm
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install the pinned Rust toolchain (rust-toolchain.toml)
+        run: |
+          rustup toolchain install --profile minimal
+          rustup show
+      - name: Cache cargo-nextest
+        id: cache-cargo-nextest
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: |
+            ~/.cargo/bin/cargo-nextest
+            ~/.cargo/bin/cargo-nextest.exe
+          key: tool-${{ runner.os }}-${{ runner.arch }}-cargo-nextest-0.9.150
+      - name: Install cargo-nextest 0.9.150
+        if: steps.cache-cargo-nextest.outputs.cache-hit != 'true'
+        run: cargo install --locked --version 0.9.150 cargo-nextest
+      - name: Build
+        run: cargo build --workspace --locked
+      - name: Test
+        run: cargo nextest run --workspace --locked
+      - name: Upload binary
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: aitm-${{ matrix.name }}
+          path: target/debug/${{ matrix.exe }}
+          if-no-files-found: error
+
+  python:
+    name: python
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Detect reference/
+        id: detect
+        run: |
+          if [ -d reference ]; then echo "present=true" >> "$GITHUB_OUTPUT"; else echo "present=false" >> "$GITHUB_OUTPUT"; echo "reference/ does not exist yet: Python checks skipped"; fi
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        if: steps.detect.outputs.present == 'true'
+        with:
+          python-version: "3.12"
+      - name: Install Python tools and dependencies
+        if: steps.detect.outputs.present == 'true'
+        run: python -m pip install -r reference/requirements.txt
+      - name: ruff
+        if: steps.detect.outputs.present == 'true'
+        run: python -m ruff check reference/
+      - name: pytest
+        if: steps.detect.outputs.present == 'true'
+        run: python -m pytest reference/
