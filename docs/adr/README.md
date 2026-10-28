@@ -16,3 +16,4 @@ public MCP/CLI schemas, every change to `unsafe` policy.
 | [0003](0003-dependency-license-policy.md) | Allowed dependencies, licenses and cargo-deny policy | accepted |
 | [0004](0004-ci-tools-and-actions.md) | Approved CI tools and GitHub Actions | accepted |
 | [0005](0005-clap-cli.md) | clap for the aitm command-line interface | accepted |
+| [0006](0006-mcp-server-stack.md) | MCP server stack for the probe server (rmcp, tokio, serde, schemars) | accepted |
