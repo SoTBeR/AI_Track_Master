@@ -6,6 +6,12 @@
 - Plan: docs/PLAN.md section 3 ("Тихих сбоев нет"), section 4 (row "CLI"), section 6 "CLI",
   section 9 M0
 
+> **Superseded in part (2026-10-28, task M0-09).** For `aitm mcp serve` only, the row
+> "`aitm mcp serve` (until M0-09)" in "Exact outputs", the "Stdin" paragraph in "Behavior" and tests 6
+> and 7 are superseded by `docs/spec/mcp-probe.md` (section "Changes to the M0-08 contract"). From
+> M0-09 on, `aitm mcp serve` speaks MCP over stdio, exits 0 on EOF and 1 on a runtime failure. The rest
+> of this spec is unchanged.
+
 ## What
 
 The command-line entry point of the single `aitm` binary (ADR-0001), built on clap

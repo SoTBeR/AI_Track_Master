@@ -3,7 +3,7 @@ id: M0-09
 title: Build the probe MCP server on rmcp over stdio with an elicitation probe
 milestone: M0
 layer: platform
-status: todo
+status: done
 depends_on: [M0-08]
 spec: docs/spec/mcp-probe.md
 agents: [architect, test-author, platform-engineer, dependency-auditor, security-reviewer, code-reviewer]
@@ -27,20 +27,20 @@ stdio and exercises MCP elicitation, to validate rmcp before M4 builds on it.
 
 ## Acceptance criteria
 
-- [ ] Server uses rmcp with tokio, stdio transport (PLAN section 4, row "MCP-сервер").
-- [ ] `<binary> mcp serve` starts it from the single binary (PLAN section 2 "Модель процессов"; section 6 "CLI").
+- [x] Server uses rmcp with tokio, stdio transport (PLAN section 4, row "MCP-сервер").
+- [x] `<binary> mcp serve` starts it from the single binary (PLAN section 2 "Модель процессов"; section 6 "CLI").
 - [ ] An automated test over stdio initializes a session, lists tools and gets a valid result from the probe tool
       on all three OSes in CI (PLAN section 9 M0 acceptance).
-- [ ] The elicitation probe reports a definite outcome for clients with and without elicitation support;
+- [x] The elicitation probe reports a definite outcome for clients with and without elicitation support;
       a client without support gets an explicit result, not a hang or silent failure (PLAN section 4;
       section 6 "Режимы автономности"; section 3 "Тихих сбоев нет").
-- [ ] The probe tools perform no file writes and read no files (PLAN section 2 principle 9).
-- [ ] Probe tools are explicitly experimental and non-public: every probe tool name carries the `probe_` prefix,
+- [x] The probe tools perform no file writes and read no files (PLAN section 2 principle 9).
+- [x] Probe tools are explicitly experimental and non-public: every probe tool name carries the `probe_` prefix,
       and the spec and tool descriptions state that they are removable without notice. Removing them in M4
       therefore requires no versioned schema migration and no ADR (AGENTS.md "Prohibitions" covers public schemas only).
-- [ ] rmcp version is pinned (PLAN section 12, row "Изменения спецификации MCP": "закреплённая версия SDK").
-- [ ] Accepted ADRs for each new dependency (AGENTS.md "Prohibitions").
-- [ ] `CHANGELOG.md` "Unreleased" updated.
+- [x] rmcp version is pinned (PLAN section 12, row "Изменения спецификации MCP": "закреплённая версия SDK").
+- [x] Accepted ADRs for each new dependency (AGENTS.md "Prohibitions").
+- [x] `CHANGELOG.md` "Unreleased" updated.
 
 ## Plan references
 

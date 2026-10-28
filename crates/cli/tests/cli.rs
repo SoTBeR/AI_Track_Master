@@ -1,6 +1,8 @@
 //! Black-box tests of the `aitm` command-line entry point (task M0-08).
 //!
-//! Contract: `docs/spec/cli-entrypoint.md` ("Public API", "Behavior", "Tests").
+//! Contract: `docs/spec/cli-entrypoint.md` ("Public API", "Behavior", "Tests"), except its
+//! `mcp serve` row, "Stdin" paragraph and tests 6-7, which `docs/spec/mcp-probe.md` supersedes
+//! (covered in `tests/mcp_probe.rs`).
 //! Every test runs the built binary via `env!("CARGO_BIN_EXE_aitm")` with `NO_COLOR=1` and
 //! `CLICOLOR_FORCE` removed. Assertions use only the substrings the spec pins; nothing depends on
 //! ANSI codes, help wording, line wrapping or path separators.
@@ -8,21 +10,13 @@
 //! Std only (ADR-0005: clap is a dependency of the binary, not of the tests).
 
 use std::ffi::OsStr;
-use std::io::Read;
-use std::process::{Child, Command, Output, Stdio};
-use std::time::{Duration, Instant};
+use std::process::{Command, Output, Stdio};
 
 /// Path of the built `aitm` binary, provided by Cargo for integration tests.
 const AITM_BIN: &str = env!("CARGO_BIN_EXE_aitm");
 
-/// Upper bound for `aitm mcp serve` to exit with stdin held open (spec "Behavior", "Stdin").
-const SERVE_TIMEOUT: Duration = Duration::from_secs(10);
-
 /// Required stderr prefix of every error (spec "Error reporting").
 const ERROR_PREFIX: &str = "error:";
-
-/// Stable substring of the `mcp serve` placeholder error (spec "Exact outputs").
-const NOT_AVAILABLE: &str = "not available yet";
 
 /// Builds a command for the binary with a deterministic, color-free environment.
 fn aitm_command<I, S>(args: I) -> Command
@@ -234,114 +228,12 @@ fn mcp_serve_help_short_flag_prints_help() {
 }
 
 // ---------------------------------------------------------------------------------------------
-// Test 6: mcp serve (placeholder until M0-09)
+// Tests 6 and 7: superseded
 // ---------------------------------------------------------------------------------------------
-
-/// Checks the `mcp serve` placeholder error on captured streams.
-fn check_not_available(info: &str, code: Option<i32>, stdout: &[u8], stderr: &[u8]) {
-    assert_eq!(code, Some(1), "expected exit 1\n{info}");
-    assert!(stdout.is_empty(), "expected empty stdout\n{info}");
-    let stderr = String::from_utf8(stderr.to_vec()).expect("stderr is not valid UTF-8");
-    assert!(
-        stderr.starts_with(ERROR_PREFIX),
-        "expected stderr to start with {ERROR_PREFIX:?}\n{info}"
-    );
-    assert!(
-        stderr.contains(NOT_AVAILABLE),
-        "expected stderr to contain {NOT_AVAILABLE:?}\n{info}"
-    );
-    // Spec "Exact outputs": the error is one line plus a line terminator.
-    let line = strip_one_line_terminator(&stderr)
-        .unwrap_or_else(|| panic!("stderr must end with a line terminator\n{info}"));
-    assert!(
-        !line.contains('\n') && !line.contains('\r'),
-        "expected exactly one stderr line\n{info}"
-    );
-}
-
-#[test]
-fn mcp_serve_fails_with_not_available_error() {
-    let args = ["mcp", "serve"];
-    let output = run(args);
-    check_not_available(
-        &describe(&args, &output),
-        output.status.code(),
-        &output.stdout,
-        &output.stderr,
-    );
-}
-
-// ---------------------------------------------------------------------------------------------
-// Test 7: mcp serve with stdin held open must not block
-// ---------------------------------------------------------------------------------------------
-
-/// Kills the child if the test fails before it has been reaped.
-struct KillOnDrop(Option<Child>);
-
-impl Drop for KillOnDrop {
-    fn drop(&mut self) {
-        if let Some(child) = self.0.as_mut() {
-            let _ = child.kill();
-            let _ = child.wait();
-        }
-    }
-}
-
-#[test]
-fn mcp_serve_returns_promptly_with_open_stdin_pipe() {
-    let child = aitm_command(["mcp", "serve"])
-        .stdin(Stdio::piped())
-        .stdout(Stdio::piped())
-        .stderr(Stdio::piped())
-        .spawn()
-        .expect("failed to spawn the aitm binary");
-    let mut guard = KillOnDrop(Some(child));
-    let child = guard.0.as_mut().expect("child present");
-    // Keep the stdin handle alive (not dropped) for the whole wait.
-    let stdin_handle = child.stdin.take().expect("stdin is piped");
-
-    let start = Instant::now();
-    let status = loop {
-        match child.try_wait().expect("try_wait failed") {
-            Some(status) => break status,
-            None if start.elapsed() >= SERVE_TIMEOUT => {
-                let _ = child.kill();
-                let _ = child.wait();
-                guard.0 = None;
-                panic!(
-                    "aitm mcp serve did not exit within {SERVE_TIMEOUT:?} with stdin held open; killed"
-                );
-            }
-            None => std::thread::sleep(Duration::from_millis(20)),
-        }
-    };
-    drop(stdin_handle);
-
-    let mut stdout = Vec::new();
-    let mut stderr = Vec::new();
-    child
-        .stdout
-        .take()
-        .expect("stdout is piped")
-        .read_to_end(&mut stdout)
-        .expect("read stdout");
-    child
-        .stderr
-        .take()
-        .expect("stderr is piped")
-        .read_to_end(&mut stderr)
-        .expect("read stderr");
-    guard.0 = None;
-
-    let output = Output {
-        status,
-        stdout,
-        stderr,
-    };
-    let info = describe(&["mcp", "serve"], &output);
-    assert_no_panic("aitm mcp serve (open stdin pipe)", &output);
-    check_not_available(&info, output.status.code(), &output.stdout, &output.stderr);
-}
+//
+// The M0-08 placeholder behavior of `aitm mcp serve` ("not available yet") is superseded by
+// `docs/spec/mcp-probe.md` (section "Changes to the M0-08 contract"). Its tests 1 (stdin null) and
+// 2 (stdin held open, then EOF) in `tests/mcp_probe.rs` replace tests 6 and 7 of this file.
 
 // ---------------------------------------------------------------------------------------------
 // Test 8: mcp without subcommand

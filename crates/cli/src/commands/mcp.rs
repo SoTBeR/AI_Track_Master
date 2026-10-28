@@ -10,10 +10,7 @@ pub fn run(command: McpCommand) -> Result<(), CliError> {
     }
 }
 
-/// Starts the MCP server over stdio. Placeholder until task M0-09.
+/// Starts the MCP server over stdio and blocks until stdin reaches end of input.
 pub fn serve() -> Result<(), CliError> {
-    Err(CliError::NotAvailable {
-        command: "mcp serve",
-        task: "M0-09",
-    })
+    aitm_server::serve_stdio().map_err(CliError::Server)
 }
