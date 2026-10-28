@@ -33,7 +33,7 @@ and returns a short summary. Do not paste full logs into the conversation; keep 
 9. **Commit**: update `CHANGELOG.md` if not done, set task `status: done`, then
    check `git status` (no stray or secret files), stage the task's files, and `git commit -s` with a Conventional Commit subject and a body containing:
    spec path, check results (one line each), metric deltas, reviewer verdicts, open questions.
-10. **Merge into dev**: fast-forward `dev` from `origin/dev`, `git switch dev`, `git merge --no-ff -s task/<M#>-<NN>-<slug>`
+10. **Merge into dev**: fast-forward `dev` from `origin/dev`, `git switch dev`, `git merge --no-ff --signoff task/<M#>-<NN>-<slug>`
    (on conflicts stop and ask), re-run the local checks on `dev`, then `git push origin dev`. Never push the task branch,
    never touch `main`. If anything fails here, leave `dev` unpushed and ask the maintainer.
 11. Report to the maintainer (in Russian): what was done, checks, findings left (minor), open questions, the merge commit on `dev`,
