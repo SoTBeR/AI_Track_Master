@@ -29,7 +29,7 @@ subcommand placeholder, so the probe MCP server (M0-09) runs from the same binar
 - [x] Errors are reported with a reason and a non-zero exit code, never a panic (AGENTS.md "Code style";
       PLAN section 3 "Тихих сбоев нет").
 - [x] Accepted ADR for the clap dependency (AGENTS.md "Prohibitions"; PLAN section 2 principle 10).
-- [ ] Tests written first pass on all three OSes in CI.
+- [x] Tests written first pass on all three OSes in CI.
 - [x] `CHANGELOG.md` "Unreleased" updated.
 
 ## Plan references

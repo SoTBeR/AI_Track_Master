@@ -174,7 +174,7 @@ Usage errors stay as clap's error type: clap renders them, and `main` exits with
 ## Acceptance criteria
 
 - [x] CLI is built on clap; ADR-0005 (clap) is accepted before merge.
-- [ ] Every row of "Exact outputs" and "Usage errors" holds on Linux, Windows and macOS in CI.
+- [x] Every row of "Exact outputs" and "Usage errors" holds on Linux, Windows and macOS in CI.
 - [x] No invocation exits with code 101 or prints `panicked` on stderr.
 - [x] `aitm mcp serve` with stdin as an open pipe exits with code 1 within 10 s.
 - [x] Existing test `crates/cli/tests/smoke.rs` (no arguments, exit 0) passes unchanged.
